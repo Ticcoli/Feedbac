@@ -7,7 +7,7 @@
  * Obtenir toutes les demandes des utilisateurs.
  */
 
-/*
+
 function GetAllRequests($year) // obtenir toutes les requêtes de demie journée d'un mois donné en parametre 
 {
 	$connect = new connexion();
@@ -333,6 +333,6 @@ function updatePassword($password)
 	$luser = $bdd->exec(' update utilisateur set `password` = "'.$password .'" where ID= '.$_SESSION['id'].' ;'  );
 	
 }
-*/
+
 
 ?>
