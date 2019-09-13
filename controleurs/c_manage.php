@@ -8,7 +8,8 @@ switch ($action)
     //page d'accueil de l'administrateur
     case "gerer" : { 
         require "vues/v_manage.php" ; 
-        break ;   }		
+        break ;   
+    }		
     
     //page d'accueil de la gestion des demandes
     case "gererdemande" : {
