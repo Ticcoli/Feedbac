@@ -11,14 +11,7 @@
             <div class="current-month" >
                 <?php 
                 $dateref = new DateTime("now");
-		if ($_SESSION['droits'] == "1") {
-                    $CP = getCompteurs($_SESSION['id'])['CP'];
-                    $SS = getCompteurs($_SESSION['id'])['SS'];
-                    echo('Reserve de jours: <br> CP: '.$CP.' <br> Sans Soldes: '.$SS  ); 
-                }
-		else {
-                    echo('Demandes en attente ce mois-ci: '.getDemandesenAttenteceMois($dateref->format('m'))['nb_demandes'].' (total: '.getDemandesceMois($dateref->format('m'))['nb_demandes'].' )');
-                }
+		
 		?>
             </div>
             <img src="includes/img/burger.png" class="abecedaire-logo" onclick="openSidebar()" id="burger_menu">
@@ -36,18 +29,6 @@
                     <span>du :  </span><input type="date" id="startdate" class="input_component" onChange="onFirstFilterDateChanged()" /><br><br>
                     <span>au : </span><input type="date" id="enddate" class="input_component" onChange="onSecondFilterDateChanged()" disabled /><br><br>			
 		</div>
-		<div class="filtre">
-                    <span>employé </span> <br><br>
-                    <select class="input_component" id="employe">
-			<option value="0">tous</option>
-                        <?php 
-                        foreach (getAllRegularUsers() as $theuser)
-                        {
-                            echo('<option value="'.$theuser['ID'].'">'. $theuser['prenom'] . ' '.$theuser['nom'] . '</option>');
-                        }			
-			?>
-                    </select>	
-		</div>
 		<div class="filtre" >
                     <span>Etat </span> <br><br>
                     <select class="input_component" id="etat">
@@ -58,11 +39,11 @@
                     </select>		
 		</div>
                 <div class="filtre" >
-                    <span>Type </span> <br><br>
+                    <span>Baccalauréat </span> <br><br>
                     <select class="input_component" id="type">
                         <option>tous</option>
-                        <option>CP</option>
-                        <option>Sans solde</option>
+                        <option>Scientifique</option>
+                        <option>Littéraire</option>
                     </select>		
                 </div>
 		<div class="input_div">

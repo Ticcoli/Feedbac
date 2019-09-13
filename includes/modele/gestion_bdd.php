@@ -127,19 +127,19 @@ function getDemandesenAttenteceMois($mois)//retourne les compteurs
 	$rawdata = $compteurs->fetch();
 	return $rawdata;
 }
-
-function getDemandes($date, $etat, $employe, $type)//retourne les compteurs 
+*/
+function getDemandes($date, $etat, $eleve, $serie,$heure)//retourne les compteurs 
 {
 	$connect = new connexion();
 	$bdd = $connect->getInstance();
-	$compteurs = $bdd->query(' select * from demie_journee
-								inner join utilisateur on demie_journee.id_utilisateur = utilisateur.ID
-								where 1=1 '.$date.$etat.$employe.$type.'
+	$compteurs = $bdd->query(' select * from horraires
+								inner join utilisateur on horraires.id_utilisateur = utilisateur.ID
+								where 1=1 '.$date.$etat.$eleve.$serie.'
 								order by date desc;'  );
 	$rawdata = $compteurs->fetchAll();
 	return $rawdata;
 }
-
+/*
 function getDemandesceMois($mois)//retourne les compteurs 
 {
 	$connect = new connexion();
