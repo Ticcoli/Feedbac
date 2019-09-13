@@ -59,10 +59,10 @@
 		}
 
 
-		function dispSemaine( $unedate)// renvoie le code HTML d'une semaine pour le calendrier? à exetuer 5 fois. PS: le compteur commence à 0
+		function dispSemaine( $unedate)// renvoie le code HTML d'une semaine pour le calendrier à exetuer 5 fois. PS: le compteur commence à 0
 		{
 			
-			$lesferies = GetJourFeriesdeLan($unedate->format('Y'));//liste desj ours feriés
+			$lesferies = GetJourFeriesdeLan($unedate->format('Y'));//liste des jours feriés
 			
 			$lesrepos = GetAllRequests($unedate->format('Y'));
 			$string = '';// contiendra le code html
@@ -142,7 +142,7 @@
 				$string.= ' <div class="calendar__daynumber day">'. $dddate->format('d') . '</div>' ;
 				
 				//ouvrir le conteneur des deux demies journées/du nom de jour ferier
-				$string .= ' <div class="calendar__demiday day">';
+				//$string .= ' <div class="calendar__demiday day">';
 				
 				//si le jour est ferié, on se contente de mettre le nom de l'évènement et on ne scinde pas le jour 
 				if ($ferie)
@@ -173,19 +173,19 @@
 						{
 							if ($_SESSION['droits'] == '1')
 							{
-								if($lerepos['id_utilisateur'] == $_SESSION['id'] )
+								if($lerepos['idutilisateur'] == $_SESSION['id'] )
 								{
 									if(is_null($lerepos['accepte']))
 									{
-										$string .='<span  onclick="raiseRequestAnwer('.$lerepos['ID_request'].')" style="color:darkgoldenrod;cursor:pointer;">' .$lerepos['type'].'</span>';
+										$string .='<span  onclick="raiseRequestAnwer('.$lerepos['idinter'].')" style="color:darkgoldenrod;cursor:pointer;">' .$lerepos['type'].'</span>';
 									}
 									else if ($lerepos['accepte'] == '0')
 									{
-										$string .='<span onclick="raiseRequestAnwer('.$lerepos['ID_request'].')" style="color:orange">' .$lerepos['type'].'</span>';
+										$string .='<span onclick="raiseRequestAnwer('.$lerepos['idinter'].')" style="color:orange">' .$lerepos['type'].'</span>';
 									}
 									else if ($lerepos['accepte'] == '1')
 									{
-										$string .='<span onclick="raiseRequestAnwer('.$lerepos['ID_request'].')" style="color:green">' .$lerepos['type'].'</span>';
+										$string .='<span onclick="raiseRequestAnwer('.$lerepos['idinter'].')" style="color:green">' .$lerepos['type'].'</span>';
 									}
 										
 								}
@@ -193,18 +193,18 @@
 							}
 							else
 								{
-								$curUser = getUserbyID($lerepos['id_utilisateur']);
+								$curUser = getUserbyID($lerepos['idutilisateur']);
 									if(is_null($lerepos['accepte']))
 									{
-										$string .='<span style="color:darkgoldenrod;cursor:pointer;" onclick="raiseRequestAnwer('.$lerepos['ID_request'].')">' .substr($curUser['prenom'], 0, 1).'. '.$curUser['nom'].' ('.$lerepos['type'].')</span><br>';
+										$string .='<span style="color:darkgoldenrod;cursor:pointer;" onclick="raiseRequestAnwer('.$lerepos['idinter'].')">' .substr($curUser['prenom'], 0, 1).'. '.$curUser['nom'].' ('.$lerepos['type'].')</span><br>';
 									}
 									else if ($lerepos['accepte'] == '0')
 									{
-										$string .='<span style="color:orange;cursor:pointer;" onclick="raiseRequestAnwer('.$lerepos['ID_request'].')">' .substr($curUser['prenom'], 0, 1).'. '.$curUser['nom'].' ('.$lerepos['type'].')</span><br>';
+										$string .='<span style="color:orange;cursor:pointer;" onclick="raiseRequestAnwer('.$lerepos['idinter'].')">' .substr($curUser['prenom'], 0, 1).'. '.$curUser['nom'].' ('.$lerepos['type'].')</span><br>';
 									}
 									else if ($lerepos['accepte'] == '1')
 									{
-										$string .='<span style="color:green;cursor:pointer;" onclick="raiseRequestAnwer('.$lerepos['ID_request'].')">' .substr($curUser['prenom'], 0, 1).'. '.$curUser['nom'].' ('.$lerepos['type'].')</span><br>';
+										$string .='<span style="color:green;cursor:pointer;" onclick="raiseRequestAnwer('.$lerepos['idinter'].')">' .substr($curUser['prenom'], 0, 1).'. '.$curUser['nom'].' ('.$lerepos['type'].')</span><br>';
 									}
 								}
 							 					
@@ -228,19 +228,19 @@
 						{
 							if ($_SESSION['droits'] == '1')
 							{
-								if($lerepos['id_utilisateur'] == $_SESSION['id'] )
+								if($lerepos['idutilisateur'] == $_SESSION['id'] )
 								{
 									if(is_null($lerepos['accepte']))
 									{
-										$string .='<span  onclick="raiseRequestAnwer('.$lerepos['ID_request'].')" style="color:darkgoldenrod;cursor:pointer;">' .$lerepos['type'].'</span>';
+										$string .='<span  onclick="raiseRequestAnwer('.$lerepos['idinter'].')" style="color:darkgoldenrod;cursor:pointer;">' .$lerepos['type'].'</span>';
 									}
 									else if ($lerepos['accepte'] == '0')
 									{
-										$string .='<span onclick="raiseRequestAnwer('.$lerepos['ID_request'].')" style="color:orange">' .$lerepos['type'].'</span>';
+										$string .='<span onclick="raiseRequestAnwer('.$lerepos['idinter'].')" style="color:orange">' .$lerepos['type'].'</span>';
 									}
 									else if ($lerepos['accepte'] == '1')
 									{
-										$string .='<span onclick="raiseRequestAnwer('.$lerepos['ID_request'].')" style="color:green">' .$lerepos['type'].'</span>';
+										$string .='<span onclick="raiseRequestAnwer('.$lerepos['idinter'].')" style="color:green">' .$lerepos['type'].'</span>';
 									}
 										
 								}
@@ -248,18 +248,18 @@
 							}
 							else
 								{
-								$curUser = getUserbyID($lerepos['id_utilisateur']);
+								$curUser = getUserbyID($lerepos['idutilisateur']);
 									if(is_null($lerepos['accepte']))
 									{
-										$string .='<span style="color:darkgoldenrod;cursor:pointer;" onclick="raiseRequestAnwer('.$lerepos['ID_request'].')">' .substr($curUser['prenom'], 0, 1).'. '.$curUser['nom'].' ('.$lerepos['type'].')</span><br>';
+										$string .='<span style="color:darkgoldenrod;cursor:pointer;" onclick="raiseRequestAnwer('.$lerepos['idinter'].')">' .substr($curUser['prenom'], 0, 1).'. '.$curUser['nom'].' ('.$lerepos['type'].')</span><br>';
 									}
 									else if ($lerepos['accepte'] == '0')
 									{
-										$string .='<span style="color:orange;cursor:pointer;" onclick="raiseRequestAnwer('.$lerepos['ID_request'].')">' .substr($curUser['prenom'], 0, 1).'. '.$curUser['nom'].' ('.$lerepos['type'].')</span><br>';
+										$string .='<span style="color:orange;cursor:pointer;" onclick="raiseRequestAnwer('.$lerepos['idinter'].')">' .substr($curUser['prenom'], 0, 1).'. '.$curUser['nom'].' ('.$lerepos['type'].')</span><br>';
 									}
 									else if ($lerepos['accepte'] == '1')
 									{
-										$string .='<span style="color:green;cursor:pointer;" onclick="raiseRequestAnwer('.$lerepos['ID_request'].')">' .substr($curUser['prenom'], 0, 1).'. '.$curUser['nom'].' ('.$lerepos['type'].')</span><br>';
+										$string .='<span style="color:green;cursor:pointer;" onclick="raiseRequestAnwer('.$lerepos['idinter'].')">' .substr($curUser['prenom'], 0, 1).'. '.$curUser['nom'].' ('.$lerepos['type'].')</span><br>';
 									}
 								}
 							 					
@@ -358,7 +358,7 @@ function newRequest($typeconge, $debut_date, $debut_moment, $fin_date, $fin_mome
 			$finished = true;
 		}
 		
-		if (!isset(getFeriebyDate($datecache->format('m'),$datecache->format('d'))['commentaire']) and $datecache->format('w') <> 0 and $datecache->format('w') <> 6 and !isset(getDemiJourneebyDateandUser($datecache->format('m'),$datecache->format('d'), $_SESSION['id'])['ID_request']))
+		if (!isset(getFeriebyDate($datecache->format('m'),$datecache->format('d'))['commentaire']) and $datecache->format('w') <> 0 and $datecache->format('w') <> 6 and !isset(getDemiJourneebyDateandUser($datecache->format('m'),$datecache->format('d'), $_SESSION['id'])['idinter']))
 		{
 			$demijourSousArray = array();
 			$demijourSousArray[0] = $datecache->format('Y-m-d');
@@ -577,20 +577,20 @@ function printAwaitingRequests($date, $etat, $employe, $type) // generation html
 			
 				
 		echo('
-			<div class="utilisateur" name="utilisateur" value="'.$lademande['ID_request'].'">
+			<div class="utilisateur" name="utilisateur" value="'.$lademande['idinter'].'">
 					<div class="utilisateur_barre_1">
 						<div class="utilisateur_sous_div">Requête de '.$letype.' pour le '.$ladate->format('D d M Y').' '.$moment.' </div> 
 						<div class="utilisateur_sous_div" > Par '.$lademande['nom'] .' '.$lademande['prenom'].' (Matricule = '.$lademande['Matricule'].') </div>
 						<div class="utilisateur_sous_div" > Etat: '.$letat.' </div>
 					</div>
 					<div class="utilisateur_barre">
-						Demi-journées à poser: <br> <br> CP : '.getCompteurs($lademande['id_utilisateur'])['CP'].' <br> <br> Sans soldes : '.getCompteurs($lademande['id_utilisateur'])['SS']  .'
+						Demi-journées à poser: <br> <br> CP : '.getCompteurs($lademande['idutilisateur'])['CP'].' <br> <br> Sans soldes : '.getCompteurs($lademande['idutilisateur'])['SS']  .'
 					</div>
 					<div class="utilisateur_barre">
 						
-						<button id="Accepter'.$lademande['ID_request'].'"  class="input_component" href="#" '.$disabled.' onClick="updateRequest('.$lademande['ID_request'].', 1, 0 )"  value="'.$lademande['ID_request'].'" >Accepter</button>
-						Commentaire : <input type="text" id="Commentaire'.$lademande['ID_request'].'"  class="input_component" href="#" '.$disabled.' value="'.$lademande['commentaire'].'" >
-						<button id="Refuser'.$lademande['ID_request'].'" class="input_component" href="#" '.$disabled.' onClick="updateRequest('.$lademande['ID_request'].', 0, 0 )"  >Refuser</button>
+						<button id="Accepter'.$lademande['idinter'].'"  class="input_component" href="#" '.$disabled.' onClick="updateRequest('.$lademande['idinter'].', 1, 0 )"  value="'.$lademande['idinter'].'" >Accepter</button>
+						Commentaire : <input type="text" id="Commentaire'.$lademande['idinter'].'"  class="input_component" href="#" '.$disabled.' value="'.$lademande['commentaire'].'" >
+						<button id="Refuser'.$lademande['idinter'].'" class="input_component" href="#" '.$disabled.' onClick="updateRequest('.$lademande['idinter'].', 0, 0 )"  >Refuser</button>
 					</div>
 				</div>
 		');
@@ -606,7 +606,7 @@ function printAwaitingRequests($date, $etat, $employe, $type) // generation html
 function printAnswerRequest($id)
 {
 	$request = getRequestbyID($id);
-	$user = getUserbyID(getRequestbyID($id)['id_utilisateur']);
+	$user = getUserbyID(getRequestbyID($id)['idutilisateur']);
 	$type = "";
 	if ($request['type'] == "ss")
 	{
@@ -655,7 +655,7 @@ function printAnswerRequest($id)
 			
 						<span class="element">Compteur CP :'.getCompteurs($user['ID'])['CP'].' </span>
 						<span class="element">Compteur Sans solde : '.getCompteurs($user['ID'])['SS'].' </span>
-						Commentaire : <input type="text" id="Commentaire'.$request['ID_request'].'"  class="input_component" href="#" '.$disabled.' value="'.$request['commentaire'].'" >');
+						Commentaire : <input type="text" id="Commentaire'.$request['idinter'].'"  class="input_component" href="#" '.$disabled.' value="'.$request['commentaire'].'" >');
 	if ($_SESSION['droits'] == 0)
 	{
 		
@@ -664,15 +664,15 @@ function printAnswerRequest($id)
 				if ($request['accepte'] == 1 )
 				{
 					echo('<span >Requête acceptée. </span>
-		<span class="element"><button id="Accepter'.$request['ID_request'].'"  class="input_component" href="#" '.$disabled.' onClick="updateRequest('.$request['ID_request'].', 1 , 0)" >Accepter</button>
-						<button id="Refuser'.$request['ID_request'].'" class="input_component" href="#" '.$disabled.' onClick="updateRequest('.$request['ID_request'].', 0 ,0 )"  >Refuser</button>
+		<span class="element"><button id="Accepter'.$request['idinter'].'"  class="input_component" href="#" '.$disabled.' onClick="updateRequest('.$request['idinter'].', 1 , 0)" >Accepter</button>
+						<button id="Refuser'.$request['idinter'].'" class="input_component" href="#" '.$disabled.' onClick="updateRequest('.$request['idinter'].', 0 ,0 )"  >Refuser</button>
 						</span>');
 				}
 				else
 				{
 					echo('<span >Requête refusée. </span>
-		<span class="element"><button id="Accepter'.$request['ID_request'].'"  class="input_component" href="#" '.$disabled.' onClick="updateRequest('.$request['ID_request'].', 1 , 0)" >Accepter</button>
-						<button id="Refuser'.$request['ID_request'].'" class="input_component" href="#" '.$disabled.' onClick="updateRequest('.$request['ID_request'].', 0 ,0 )"  >Refuser</button>
+		<span class="element"><button id="Accepter'.$request['idinter'].'"  class="input_component" href="#" '.$disabled.' onClick="updateRequest('.$request['idinter'].', 1 , 0)" >Accepter</button>
+						<button id="Refuser'.$request['idinter'].'" class="input_component" href="#" '.$disabled.' onClick="updateRequest('.$request['idinter'].', 0 ,0 )"  >Refuser</button>
 						</span>');
 
 				}
@@ -680,8 +680,8 @@ function printAnswerRequest($id)
 			}
 			else{
 				echo('<span >Requête en attente. </span>
-		<span class="element"><button id="Accepter'.$request['ID_request'].'"  class="input_component" href="#" '.$disabled.' onClick="updateRequest('.$request['ID_request'].', 1 , 0)" >Accepter</button>
-						<button id="Refuser'.$request['ID_request'].'" class="input_component" href="#" '.$disabled.' onClick="updateRequest('.$request['ID_request'].', 0 ,0 )"  >Refuser</button>
+		<span class="element"><button id="Accepter'.$request['idinter'].'"  class="input_component" href="#" '.$disabled.' onClick="updateRequest('.$request['idinter'].', 1 , 0)" >Accepter</button>
+						<button id="Refuser'.$request['idinter'].'" class="input_component" href="#" '.$disabled.' onClick="updateRequest('.$request['idinter'].', 0 ,0 )"  >Refuser</button>
 						</span>');
 			}
 		
@@ -693,19 +693,19 @@ function printAnswerRequest($id)
 				if ($request['accepte'] == 1 )
 				{
 					echo('
-						<span class="element"><button id="Modifier'.$request['ID_request'].'" class="input_component" href="#" onClick="deleteRequest('.$request['ID_request'].')" disabled >Requête acceptée</button></span>');
+						<span class="element"><button id="Modifier'.$request['idinter'].'" class="input_component" href="#" onClick="deleteRequest('.$request['idinter'].')" disabled >Requête acceptée</button></span>');
 				}
 				else
 				{
 					echo('
-						<span class="element"><button id="Modifier'.$request['ID_request'].'" class="input_component" href="#" onClick="deleteRequest('.$request['ID_request'].')" disabled >Requête refusée</button></span>');
+						<span class="element"><button id="Modifier'.$request['idinter'].'" class="input_component" href="#" onClick="deleteRequest('.$request['idinter'].')" disabled >Requête refusée</button></span>');
 
 				}
 				
 			}
 			else{
 				echo('
-						<span class="element"><button id="Modifier'.$request['ID_request'].'" class="input_component" href="#" onClick="deleteRequest('.$request['ID_request'].')"  >Annuler cette requête</button></span>');
+						<span class="element"><button id="Modifier'.$request['idinter'].'" class="input_component" href="#" onClick="deleteRequest('.$request['idinter'].')"  >Annuler cette requête</button></span>');
 			}
 			
 	}
@@ -777,24 +777,24 @@ function printRecapitulatif()
 		{
 			$user = array();
 			
-			if (!isset($anarray[$entree['id_utilisateur']]))
+			if (!isset($anarray[$entree['idutilisateur']]))
 			{
 				
-				$anarray[$entree['id_utilisateur']] = $user;
-				$anarray[$entree['id_utilisateur']]['id'] = $entree['id_utilisateur'];
-			$anarray[$entree['id_utilisateur']]['nom'] = $entree['nom'];
-			$anarray[$entree['id_utilisateur']]['prenom'] = $entree['prenom'];
+				$anarray[$entree['idutilisateur']] = $user;
+				$anarray[$entree['idutilisateur']]['id'] = $entree['idutilisateur'];
+			$anarray[$entree['idutilisateur']]['nom'] = $entree['nom'];
+			$anarray[$entree['idutilisateur']]['prenom'] = $entree['prenom'];
 			}
 			
 			if ($entree['accepte'] == null)
 			{
 				if (isset($entree['nb']) )
 				{
-					$anarray[$entree['id_utilisateur']]['ea'] = $entree['nb'];
+					$anarray[$entree['idutilisateur']]['ea'] = $entree['nb'];
 				}
 				else
 				{
-					$anarray[$entree['id_utilisateur']]['ea'] = 0;
+					$anarray[$entree['idutilisateur']]['ea'] = 0;
 				}
 				
 			}
@@ -802,22 +802,22 @@ function printRecapitulatif()
 			{
 				if (isset($entree['nb']) )
 				{
-					$anarray[$entree['id_utilisateur']]['a'] = $entree['nb'];
+					$anarray[$entree['idutilisateur']]['a'] = $entree['nb'];
 				}
 				else
 				{
-					$anarray[$entree['id_utilisateur']]['a'] = 0;
+					$anarray[$entree['idutilisateur']]['a'] = 0;
 				}
 			}
 			else if ($entree['accepte'] == 0)
 			{
 				if (isset($entree['nb']) )
 				{
-					$anarray[$entree['id_utilisateur']]['r'] = $entree['nb'];
+					$anarray[$entree['idutilisateur']]['r'] = $entree['nb'];
 				}
 				else
 				{
-					$anarray[$entree['id_utilisateur']]['r'] = 0;
+					$anarray[$entree['idutilisateur']]['r'] = 0;
 				}
 			}
 			$i++;

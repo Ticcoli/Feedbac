@@ -1,4 +1,5 @@
-<?php /* date.timezone("Europe/Paris");*/  
+<?php 
+	//date.timezone(Europe/Paris);    *php.ini*
 	$dateref = new DateTime($_COOKIE['date']); ?>
 <div class="wrapper">
   <main id="conteneur">
@@ -9,16 +10,22 @@
       </div>
       <div class="current-month" ><?php echo($dateref->format('M').' '.$dateref->format('Y')); ?></div>
 		  <div class="current-month" ><?php echo($_SESSION['prenom'].' '. $_SESSION['nom']); ?></div>
-		  <div class="current-month" ><?php if ($_SESSION['droits'] == "1")
-{
-	$CP = getCompteurs($_SESSION['id'])['CP'];
-			  $SS = getCompteurs($_SESSION['id'])['SS'];
-			  echo('Reserve de demi-journées: <br> CP: '.$CP.' <br> Sans Soldes: '.$SS  ); 
-}
-			  else
-			  {
-				  echo('Demandes en attente ce mois-ci: '.getDemandesenAttenteceMois($dateref->format('m'))['nb_demandes'].' (total: '.getDemandesceMois($dateref->format('m'))['nb_demandes'].' )');
-			  }
+		  <div class="current-month" ><?php 
+		  	if ($_SESSION['droits'] == "2")
+				{
+					/*
+						$CP = getCompteurs($_SESSION['id'])['CP'];
+						$SS = getCompteurs($_SESSION['id'])['SS'];
+						echo('Reserve de demi-journées: <br> CP: '.$CP.' <br> Sans Soldes: '.$SS  ); 
+					*/
+
+
+					// afficher le nombre d'intervention de prevu pour l'eleve
+				}
+			else
+			  	{
+					echo('Demandes en attente ce mois-ci: '.getDemandesenAttenteceMois($dateref->format('m'))['nb_demandes'].' (total: '.getDemandesceMois($dateref->format('m'))['nb_demandes'].' )');
+				}
 			  ?></div>
 		  <div class="current-month" >
 		  <form action="includes/modele/deconnexion.php" method="get">
@@ -43,7 +50,7 @@
 		<?php
 		
 		
-			echo(dispSemaine( $dateref));//affiche une ligne en fonction de la semaine dans le moi, et du mois en question (sous forme de date )
+			echo(dispSemaine( $dateref));//affiche une ligne en fonction de la semaine dans le mois, et du mois en question (sous forme de date )
 			
 		 ?>
     </div>

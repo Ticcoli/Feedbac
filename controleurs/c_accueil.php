@@ -43,10 +43,11 @@ switch ($action)
             if ($luser['nom'] <> '' and (md5($lepassword) == $luser['password']) )
             {
                 //login et mot de passe corrects
-                $_SESSION['id'] = $luser['ID'];
+                $_SESSION['id'] = $luser['IDuser'];
                 $_SESSION['nom'] = $luser['nom'];
                 $_SESSION['prenom'] = $luser['prenom'];
                 $_SESSION['mail'] = $luser['mail'];
+                $_SESSION['telephone'] = $luser['telephone'];
                 $_SESSION['droits'] = $luser['droits'];
                 $_SESSION['password'] = $luser['password'];
                 $_SESSION['serie'] = $luser['serie'];
