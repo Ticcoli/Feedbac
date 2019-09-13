@@ -47,8 +47,11 @@ switch ($action)
                 $_SESSION['nom'] = $luser['nom'];
                 $_SESSION['prenom'] = $luser['prenom'];
                 $_SESSION['mail'] = $luser['mail'];
-                $_SESSION['matricule'] = $luser['Matricule'];
                 $_SESSION['droits'] = $luser['droits'];
+                $_SESSION['password'] = $luser['password'];
+                $_SESSION['serie'] = $luser['serie'];
+                $_SESSION['session'] = $luser['session'];
+                $_SESSION['parcours'] = $luser['parcours'];
                 
                 //redirection vers la page d'accueil
                 require "vues/v_accueil.php" ;    
