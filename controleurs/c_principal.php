@@ -12,9 +12,9 @@ switch ($uc)
         include "c_accueil.php" ; 
         break ;
     }
-    case 'user' : { 
+    case 'prof' : { 
         if ($_SESSION['droits'] == "1") {
-            include "c_user.php" ; 
+            include "c_prof.php" ; 
         }
         break ;        
     }
@@ -23,6 +23,12 @@ switch ($uc)
             include "c_manage.php";            
         }
         break; 
+    }
+    case 'eleve';{
+         if ($_SESSION['droits'] == "2") {
+            include "c_eleve.php";            
+        }
+        break;
     }
 	
 }
