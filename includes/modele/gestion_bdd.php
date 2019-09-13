@@ -89,7 +89,7 @@ function getDemiJourneebyID($id) //retourne l'utilisateur
 		
     return $rawdata;
 }
-
+*/
 function getUserbyMail($mail) //retourne l'utilisateur
 {
 	$connect = new connexion();
@@ -99,7 +99,7 @@ function getUserbyMail($mail) //retourne l'utilisateur
 		
     return $rawdata;
 }
-
+/*
 function getUserbyID($id) //retourne l'utilisateur
 {
 	$connect = new connexion();
@@ -118,7 +118,7 @@ function getCompteurs($userid)//retourne les compteurs
 	$rawdata = $compteurs->fetch();
 	return $rawdata;
 }
-
+*/
 function getDemandesenAttenteceMois($mois)//retourne les compteurs 
 {
 	$connect = new connexion();
@@ -127,7 +127,7 @@ function getDemandesenAttenteceMois($mois)//retourne les compteurs
 	$rawdata = $compteurs->fetch();
 	return $rawdata;
 }
-
+/*
 function getDemandes($date, $etat, $employe, $type)//retourne les compteurs 
 {
 	$connect = new connexion();
