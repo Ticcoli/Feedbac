@@ -18,7 +18,7 @@ class connexion {
         $user =  'root';
         $password =  '';
         $host= 'localhost' ;
-        $bd = 'stadjutodmbd01' ;
+        $bd = 'stadjutodmbd01';
 
         
         // Database connection

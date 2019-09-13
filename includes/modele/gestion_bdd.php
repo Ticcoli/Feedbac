@@ -12,12 +12,15 @@ function GetAllRequests($year) // obtenir toutes les requêtes de demie journée
 {
 	$connect = new connexion();
 	$bdd = $connect->getInstance();
-	$lesdemandes = $bdd->query(' select ID_request, date, id_utilisateur, year(date) as annee,  day(date) as jour, month(date) as mois, moment, type, accepte   from demie_journee where year(date) = ' . $year );
+	$lesdemandes = $bdd->query(' select ID, date, idutilisateur, year(date) as annee,  day(date) as jour, month(date) as mois, moment,heure, accepte   
+	from intervention 
+	inner join horaires on idhoraire = horaires.ID 
+	where year(date) = ' . $year );
 	$rawdata = $lesdemandes->fetchAll();
 		
     return $rawdata;
 }
-
+/*
 function GetRequestbyID($ID) // obtenir toutes les requêtes de demie journée d'un mois donné en parametre 
 {
 	$connect = new connexion();
@@ -27,7 +30,7 @@ function GetRequestbyID($ID) // obtenir toutes les requêtes de demie journée d
 		
     return $rawdata;
 }
-
+*/
 function GetJourFeriesdeLan($year) //obtenir tous les jours feriés du mois en parametre.
 {
 	
@@ -39,7 +42,7 @@ function GetJourFeriesdeLan($year) //obtenir tous les jours feriés du mois en p
 		
     return $rawdata;
 }
-
+/*
 function GetJourReposduMoisparUser($mois) //obtenir tous les jours feriés du mois en parametre.
 {
 	$connect = new connexion();
@@ -89,7 +92,7 @@ function getDemiJourneebyID($id) //retourne l'utilisateur
 		
     return $rawdata;
 }
-*/
+
 function getUserbyMail($mail) //retourne l'utilisateur
 {
 	$connect = new connexion();
@@ -99,7 +102,7 @@ function getUserbyMail($mail) //retourne l'utilisateur
 		
     return $rawdata;
 }
-/*
+
 function getUserbyID($id) //retourne l'utilisateur
 {
 	$connect = new connexion();
@@ -123,17 +126,12 @@ function getDemandesenAttenteceMois($mois)//retourne les compteurs
 {
 	$connect = new connexion();
 	$bdd = $connect->getInstance();
-	$compteurs = $bdd->query(' select count(*) as nb_demandes from demie_journee where month(date) = '.$mois.' and accepte is null;'  );
+	$compteurs = $bdd->query(' select count(*) as nb_demandes from intervention where month(date) = '.$mois.' and accepte is null;'  );
 	$rawdata = $compteurs->fetch();
 	return $rawdata;
 }
-<<<<<<< HEAD
-*/
+
 function getDemandes($date, $etat, $eleve, $serie,$heure)//retourne les compteurs 
-=======
-/*
-function getDemandes($date, $etat, $employe, $type)//retourne les compteurs 
->>>>>>> f14c657288e78c1c79ec121e8ede465b69f29dc8
 {
 	$connect = new connexion();
 	$bdd = $connect->getInstance();
@@ -144,16 +142,16 @@ function getDemandes($date, $etat, $employe, $type)//retourne les compteurs
 	$rawdata = $compteurs->fetchAll();
 	return $rawdata;
 }
-/*
+
 function getDemandesceMois($mois)//retourne les compteurs 
 {
 	$connect = new connexion();
 	$bdd = $connect->getInstance();
-	$compteurs = $bdd->query('  select count(*) as nb_demandes from demie_journee where month(date) = '.$mois.';'  );
+	$compteurs = $bdd->query('  select count(*) as nb_demandes from intervention where month(date) = '.$mois.';'  );
 	$rawdata = $compteurs->fetch();
 	return $rawdata;
 }
-
+/*
 function getAllUsers()//retourne les utilisaterus
 {
 	$connect = new connexion();
@@ -338,6 +336,6 @@ function updatePassword($password)
 	$luser = $bdd->exec(' update utilisateur set `password` = "'.$password .'" where ID= '.$_SESSION['id'].' ;'  );
 	
 }
-
+*/
 
 ?>
