@@ -142,7 +142,7 @@
 				$string.= ' <div class="calendar__daynumber day">'. $dddate->format('d') . '</div>' ;
 				
 				//ouvrir le conteneur des deux demies journées/du nom de jour ferier
-				//$string .= ' <div class="calendar__demiday day">';
+				$string .= ' <div class="calendar__demiday day">';
 				
 				//si le jour est ferié, on se contente de mettre le nom de l'évènement et on ne scinde pas le jour 
 				if ($ferie)
