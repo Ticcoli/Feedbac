@@ -198,6 +198,27 @@ function checkDate()//eviter les incohérence entre date debut et date fin
 //  xhttp.send();
 //}
 
+function checkSignInFields() //TODO verif label inscription
+{
+	    var button = document.getElementById("SignInButton");
+	var nom = document.getElementById("nom");
+	var prenom = document.getElementById("prenom");
+	var mail = document.getElementById("mail");
+	var serie = document.getElementById("serie");
+	var session = document.getElementById("session");
+	var msg = document.getElementById("msg");
+	var password = document.getElementById("password");
+	var repeatPassword = document.getElementById("repeatPassword");
+
+	if (nom.value == '' || prenom.value == '' || mail.value=='' || serie.value=='' || session.value='' || msg.value=='' || password.value=='' || repeatPassword.value=='')
+		{
+			button.disabled = true;
+		}
+	else{
+			button.disabled = false;
+		}
+}
+
 function raiseRequestAnwer(id)
 {
 		var xhttp;

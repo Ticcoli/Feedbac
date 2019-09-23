@@ -1,45 +1,50 @@
-<form method="post">
-    <div>
-        <label for="nom">Nom :</label>
-        <input type="text" id="nom" name="user_nom">
-    </div>
-    <div>
-        <label for="prenom">Prénom :</label>
-        <input type="text" id="prenom" name="user_prenom">
-    </div>
-    <div>
-        <label for="mail">e-mail?:</label>
-        <input type="email" id="mail" name="mail">
-    </div>
-    <div>
-        <label for="portable">Téléphone portable (optionnel) :</label>
-        <input type="text" id="portable" name="portable">
-    </div>
-    <div>
-        <label for="serie">Baccalauréat série :</label>
-        <input type="text" id="serie" name="serie">
-    </div>
-    <div>
-        <label for="session">Année d'obtention :</label>
-        <input type="string" id="session" name="session">
-    </div>
 
-    <div>
-        <label for="msg">Message :</label>
-        <textarea id="msg" name="user_message"></textarea>
-    </div>
-    <div>
-        <label for="password">Mot de passe :</label>
-        <input type=password id="password" name="password">
-    </div>
-    <div>
-        <input type="password" name="repeatPassword">
-        <input type=password id="password" name="repeatPassword">
-        <br><br>
+<div class="wrapper_login">
+    <div class="main_login">
+        <form method="post">
+            <div>
+                <label for="nom">Nom :</label>
+                <input type="text" id="nom" name="user_nom">
+            </div>
+            <div>
+                <label for="prenom">Prénom :</label>
+                <input type="text" id="prenom" name="user_prenom">
+            </div>
+            <div>
+                <label for="mail">e-mail :</label>
+                <input type="email" id="mail" name="mail">
+            </div>
+            <div>
+                <label for="portable">Téléphone portable (optionnel) :</label>
+                <input type="text" id="portable" name="portable">
+            </div>
+            <div>
+                <label for="serie">Baccalauréat série :</label>
+                <input type="text" id="serie" name="serie">
+            </div>
+            <div>
+                <label for="session">Année d'obtention :</label>
+                <input type="string" id="session" name="session">
+            </div>
 
-        <input type="submit" name="submit" value="Valider">
+            <div>
+                <label for="msg">Message :</label>
+                <textarea id="msg" name="user_message"></textarea>
+            </div>
+            <div>
+                <label for="password">Mot de passe :</label>
+                <input type=password id="password" name="password">
+            </div>
+            <div>
+                <input type="password" name="repeatPassword">
+                <input type=password id="repeatPassword" name="repeatPassword">
+                <br><br>
+
+                <input type="submit" id="SignInButton" name="submit" value="Valider">
+            </div>
+        </form>
     </div>
-</form>
+</div>
 
 <?php
     session_start();
