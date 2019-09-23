@@ -3,7 +3,7 @@
     <div class="avatar">
      <div class="avatar__name"><?php echo($_SESSION['mail']); ?></div>
         <div class="avatar__name">Utilisateur </div>
-        <div class="avatar__name"><?php echo($_SESSION['matricule']); ?> </div>
+        <div class="avatar__name"><?php echo($_SESSION['nom']); ?> </div>
     </div>
 	
     <div class="formulaire_ajout_demiejournee">

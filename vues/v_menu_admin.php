@@ -15,7 +15,7 @@
                 $ajd = new DateTime('now');
                 ?> 
             </div>
-            <div class="avatar__name"><?php echo($_SESSION['matricule']); ?> </div>
+            <div class="avatar__name"><?php echo($_SESSION['nom']); ?> </div>
 		
     </div>
 	

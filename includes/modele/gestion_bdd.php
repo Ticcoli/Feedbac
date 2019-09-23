@@ -8,7 +8,7 @@
  */
 
 
-function GetAllRequests($year) // obtenir toutes les requêtes de demie journée d'un mois donné en parametre 
+function GetAllRequests($year) // TODO obtenir toutes les requêtes de demie journée d'un mois donné en parametre 
 {
 	$connect = new connexion();
 	$bdd = $connect->getInstance();
